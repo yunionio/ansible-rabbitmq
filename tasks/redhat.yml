@@ -1,11 +1,19 @@
 ---
 - name: redhat | installing pre-reqs
   yum:
-    name: ['epel-release', 'wget']
+    name: wget
     state: present
   become: true
   register: result
   until: result is successful
+
+- name: redhat | setup erlang-solutions repo
+  yum_repository:
+    name: erlang-solutions
+    description: Centos $releasever - $basearch - Erlang Solutions
+    baseurl: "{{ erlang_solutions_redhat_repo_url }}"
+    gpgcheck: yes
+    gpgkey: "{{ erlang_solutions_redhat_repo_key }}"
 
 - name: redhat | installing erlang
   yum:

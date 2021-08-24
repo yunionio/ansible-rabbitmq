@@ -69,6 +69,9 @@ rabitmq_ssl_options: {}
 # verify: verify_peer
 # fail_if_no_peer_cert: "false"
 
+erlang_solutions_redhat_repo_key: http://binaries.erlang-solutions.com/debian/erlang_solutions.asc
+erlang_solutions_redhat_repo_url: http://binaries.erlang-solutions.com/rpm/centos/$releasever/$basearch 
+
 rabbitmq_redhat_repo_key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
 rabbitmq_redhat_package: "rabbitmq-server-{{ rabbitmq_redhat_version }}-1.el{{ ansible_distribution_major_version }}.noarch.rpm"
 rabbitmq_redhat_url: "https://dl.bintray.com/rabbitmq/rpm/rabbitmq-server/v3.8.x/el/{{ ansible_distribution_major_version }}/noarch"
