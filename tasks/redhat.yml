@@ -12,7 +12,7 @@
     name: erlang-solutions
     description: Centos $releasever - $basearch - Erlang Solutions
     baseurl: "{{ erlang_solutions_redhat_repo_url }}"
-    gpgcheck: yes
+    gpgcheck: no
     gpgkey: "{{ erlang_solutions_redhat_repo_key }}"
 
 - name: redhat | installing erlang
@@ -23,13 +23,13 @@
   register: result
   until: result is successful
 
-- name: redhat | adding RabbitMQ public GPG key
-  rpm_key:
-    key: "{{ rabbitmq_redhat_repo_key }}"
-    state: present
-  become: true
-  register: result
-  until: result is successful
+# - name: redhat | adding RabbitMQ public GPG key
+#   rpm_key:
+#     key: "{{ rabbitmq_redhat_repo_key }}"
+#     state: present
+#   become: true
+#   register: result
+#   until: result is successful
 
 - name: redhat | downloading RabbitMQ
   get_url:
